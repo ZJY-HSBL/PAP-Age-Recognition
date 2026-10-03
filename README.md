@@ -169,14 +169,6 @@ python -m pap_age.cli smoke-test --data-root data/toy
 pytest -q
 ```
 
-### Reproducibility notes
-
-Set `seed` in YAML. PCA is fitted **only on training identities**. Sequence train/test splitting is identity-disjoint to avoid leakage. Predictions and CS curves are always generated from the held-out identity set.
-
-The original protocol specifies the architecture, PCA retention, dataset split ratios, learning rates, epochs, batch sizes, MAE/CS metrics, and the use of attention, but does not fully specify every implementation detail such as optimizer choice, LSTM hidden width, attention scoring parameterization, data augmentation, or random seed. Those unspecified choices are explicit and configurable here rather than silently hard-coded.
-
-See `docs/RESEARCH_OVERVIEW.md` for the mathematical specification and `METHOD_PROVENANCE.md` for method attribution.
-
 ---
 
 ## 中文
@@ -345,11 +337,3 @@ python scripts/make_toy_data.py --output data/toy --people 12 --images-per-perso
 python -m pap_age.cli smoke-test --data-root data/toy
 pytest -q
 ```
-
-### 可重复性说明
-
-随机种子由YAML统一管理。PCA只使用训练身份拟合；序列阶段严格按身份隔离训练集与测试集，避免同一人的图像跨集合造成信息泄漏。预测CSV和CS曲线均从保留身份集合生成。
-
-研究设定明确给出了总体架构、PCA保留比例、数据划分比例、学习率、训练轮数、批处理大小、MAE/CS指标与注意力机制，但并未完整给出优化器、LSTM隐藏维度、注意力具体打分形式、数据增强和随机种子等实现细节。仓库将这些未明确部分全部参数化并显式记录，避免隐藏假设。
-
-数学说明见`docs/RESEARCH_OVERVIEW.md`，方法来源与归属说明见`METHOD_PROVENANCE.md`。
