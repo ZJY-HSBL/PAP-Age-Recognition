@@ -1,0 +1,45 @@
+project:
+  name: toy
+  seed: 7
+  output_dir: runs/toy
+
+data:
+  metadata: data/toy/metadata_split.csv
+  image_size: 64
+  num_workers: 0
+  train_ratio: 0.8
+  val_ratio: 0.0
+  age_min: 0
+  age_max: 100
+
+cnn:
+  backbone: tiny
+  pretrained: false
+  dropout: 0.2
+  learning_rate: 0.001
+  epochs: 1
+  batch_size: 8
+  optimizer: adam
+  weight_decay: 0.0
+  label_smoothing: 0.0
+
+pca:
+  variance: 0.95
+  expected_dimension: null
+
+sequence:
+  hidden_size: 32
+  num_layers: 1
+  bidirectional: false
+  attention_dim: 16
+  learning_rate: 0.001
+  epochs: 1
+  batch_size: 4
+  optimizer: adam
+  weight_decay: 0.0
+  loss: mae
+  min_sequence_length: 2
+  causal_attention: true
+
+evaluation:
+  max_cs_error: 10

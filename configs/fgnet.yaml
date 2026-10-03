@@ -1,0 +1,45 @@
+project:
+  name: fgnet
+  seed: 42
+  output_dir: runs/fgnet
+
+data:
+  metadata: data/fgnet_split.csv
+  image_size: 299
+  num_workers: 2
+  train_ratio: 0.8
+  val_ratio: 0.0
+  age_min: 0
+  age_max: 100
+
+cnn:
+  backbone: inception_v4
+  pretrained: true
+  dropout: 0.8
+  learning_rate: 0.001
+  epochs: 100
+  batch_size: 2
+  optimizer: adam
+  weight_decay: 0.0
+  label_smoothing: 0.0
+
+pca:
+  variance: 0.95
+  expected_dimension: 171
+
+sequence:
+  hidden_size: 256
+  num_layers: 1
+  bidirectional: false
+  attention_dim: 128
+  learning_rate: 0.001
+  epochs: 300
+  batch_size: 1
+  optimizer: adam
+  weight_decay: 0.0
+  loss: mae
+  min_sequence_length: 2
+  causal_attention: true
+
+evaluation:
+  max_cs_error: 10
