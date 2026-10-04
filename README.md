@@ -112,20 +112,6 @@ python -m pap_age.cli evaluate --config configs/morph.yaml
 
 For FG-NET replace the config with `configs/fgnet.yaml`.
 
-One-command scripts are also included:
-
-```bash
-bash scripts/run_morph.sh
-bash scripts/run_fgnet.sh
-```
-
-Windows:
-
-```bat
-scripts\run_morph.bat
-scripts\run_fgnet.bat
-```
-
 ### Face preprocessing
 
 Three reproducible preprocessing modes are supported:
@@ -280,20 +266,6 @@ python -m pap_age.cli evaluate --config configs/morph.yaml
 ```
 
 FG-NET只需将配置替换为`configs/fgnet.yaml`。
-
-仓库同时提供一键脚本：
-
-```bash
-bash scripts/run_morph.sh
-bash scripts/run_fgnet.sh
-```
-
-Windows：
-
-```bat
-scripts\run_morph.bat
-scripts\run_fgnet.bat
-```
 
 ### 人脸预处理
 
